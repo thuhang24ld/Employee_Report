@@ -26,8 +26,8 @@ from email.mime.text import MIMEText
 # CẤU HÌNH
 # ============================================================
 
-IPOS_EMAIL    = "hangnt@banrau.vn"
-IPOS_PASSWORD = "H123456"   # <-- điền password
+IPOS_EMAIL    = "Email"
+IPOS_PASSWORD = "password"
 
 
 COMPANY_ID = "BY6QM8X5LMWW"
