@@ -14,8 +14,8 @@ from datetime import datetime, timezone, timedelta, date
 # CẤU HÌNH
 # ============================================================
 
-IPOS_EMAIL    = "hangnt@banrau.vn"
-IPOS_PASSWORD = "H123456"   # <-- điền password
+IPOS_EMAIL    = "Email"
+IPOS_PASSWORD = "password"  
 
 COMPANY_UID    = "415adcf8-9b6d-4167-bd02-305421f456bc"
 BRAND_UID      = "0e92cf59-1c6d-4f37-97d4-2c2e89254c3d"
