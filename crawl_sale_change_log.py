@@ -23,8 +23,8 @@ from email.mime.multipart import MIMEMultipart
 # CẤU HÌNH
 # ============================================================
 
-IPOS_EMAIL    = "hangnt@banrau.vn"
-IPOS_PASSWORD = "H123456"   # <-- điền password
+IPOS_EMAIL    = "Email"
+IPOS_PASSWORD = "password"
 
 
 COMPANY_UID    = "415adcf8-9b6d-4167-bd02-305421f456bc"
