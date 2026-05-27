@@ -53,7 +53,7 @@ An end-to-end automated ETL (Extract, Transform, Load) pipeline designed to opti
 ## 📊 Business Intelligence Dashboard (Looker Studio)
 
 The transformed data updates live visualizations optimized for F&B operations managers:
-* **Employee Performance Table:** Revenue generated per shift, checkouts handled, and average processing error rates. https://github.com/thuhang24ld/Employee_Report/blob/main/Presentation/B%E1%BA%A2N_RAU_-_B%C3%81O_C%C3%81O_NH%C3%82N_S%E1%BB%B0.pdf
+* **Employee Performance Table:** Revenue generated per shift, checkouts handled, and average processing error rates. [Xem file PDF](https://github.com/thuhang24ld/Employee_Report/blob/main/Presentation/B%E1%BA%A2N_RAU_-_B%C3%810_C%C3%810_NH%C3%82N_S%E1%BB%B0.pdf)
 * **Kitchen Efficiency Tracker:** Monitor item processing speed against standard SLAs.
 * **Risk & Fraud Control Monitor:** Highlighting unusual item cancellations or manual price overrides.
 
