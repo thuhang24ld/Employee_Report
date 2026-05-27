@@ -24,11 +24,10 @@ An end-to-end automated ETL (Extract, Transform, Load) pipeline designed to opti
 ## 📂 Repository Structure
 
 * `.github/` - Github actions and workflow configurations.
-* `crawl_sale_by_date.py` - Script responsible for daily sales extraction filterable by operational date.
-* `crawl_sale_change_log.py` - Extracts audit trails and transactional modifications.
-* `crawl_sale_detail.py` - Fetches granular item-level breakdowns for each receipt.
-* `crawl_time.py` - Tracks kitchen operational metrics and item preparation times.
-* `Employee_Report.py` - The core **Transformation & Loading Engine** that cleans records and synchronizes with Google Sheets.
+* `scripts/`: Core Python engine (github.py) and automation scripts (.sh/.bat).
+* `config/`: Environment variables (.env) and API credentials (git-ignored for security).
+* `data/`: Local audit trail of processed files (timestamped).
+* `presentation/`: A comprehensive PDF case study detailing the ETL workflow and Looker Studio dashboard previews.
 * `README.md` - Project documentation.
 
 ---
