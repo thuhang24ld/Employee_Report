@@ -17,27 +17,8 @@ An end-to-end automated ETL (Extract, Transform, Load) pipeline designed to opti
 ---
 
 ## 🏗️ System Architecture
-<img width="557" height="392" alt="image" src="https://github.com/user-attachments/assets/59a70747-95d9-40fa-8e77-8846c43d26fc" />
+<img width="471" height="390" alt="image" src="https://github.com/user-attachments/assets/3e769bb7-c96b-4b5a-8d4d-b725d4657226" />
 
-[ iPOS (Fabi) System ]
-
-▼ (Extract)
-┌────────────────────────────────────────────────────────┐
-│ Python Crawl Scripts (Triggered daily via taskschd.msc)│
-└────────────────────────────────────────────────────────┘
-│
-▼ (Raw CSV Storage)
-┌────────────────────────────────────────────────────────┐
-│ Data Transformation Engine (Employee_Report.py)        │
-│ ── Transformed nested JSON/Strings & Multi-tables      │
-│ ── Aggregated KPI matrices (Working durations, Sales)  │
-└────────────────────────────────────────────────────────┘
-│
-▼ (Load via Google Sheets API)
-[ Google Sheets Database ]
-│
-▼ (Live Connection)
-[ Looker Studio BI Dashboard ] ──► End-user Report (Managers/Owners)
 ---
 
 ## 📂 Repository Structure
