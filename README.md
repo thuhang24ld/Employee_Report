@@ -68,11 +68,11 @@ The transformed data updates live visualizations optimized for F&B operations ma
 
 ### Installation
 1. Clone the repository:
-Bash
+```bash
 git clone [https://github.com/your-username/automated-fb-employee-analysis.git](https://github.com/your-username/automated-fb-employee-analysis.git)
 cd automated-fb-employee-analysis   
 2. Install required packages:
-Bash
+```bash
 pip install pandas requests google-auth google-api-python-client
 3. Place your Google API credentials credentials.json into the root directory.
 Automation Scheduling (Windows)
