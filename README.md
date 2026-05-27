@@ -1,24 +1,3 @@
-# Automated Employee Data Analysis in the F&B Industry
-
-## Overview
-This project is a complete ETL (Extract, Transform, Load) pipeline that automates the extraction of daily sales data from the iPOS (Fabi) system. It transforms raw, nested transaction logs into structured data and loads it directly into Google Sheets to power real-time Data Studio dashboards.
-
-Impact: It eliminates 5+ hours of manual data entry/week, ensures 100% data integrity for financial reconciliation, and provides instant business visibility.
-
-## Tools
-- Python
-- Data Studio
-- Google Sheets
-
-## Features
-- Revenue tracking
-- Peak hour analysis
-- Employee performance
-- Sales trends
-- 
-
-## Dashboard Preview
-New
 # Automated Employee Data Analysis Pipeline in the F&B Industry
 
 [![Python](https://img.shields.io/badge/Python-3.9+-blue.svg)](https://www.python.org/)
@@ -40,6 +19,25 @@ An end-to-end automated ETL (Extract, Transform, Load) pipeline designed to opti
 ## 🏗️ System Architecture
 <img width="557" height="392" alt="image" src="https://github.com/user-attachments/assets/59a70747-95d9-40fa-8e77-8846c43d26fc" />
 
+[ iPOS (Fabi) System ]
+
+▼ (Extract)
+┌────────────────────────────────────────────────────────┐
+│ Python Crawl Scripts (Triggered daily via taskschd.msc)│
+└────────────────────────────────────────────────────────┘
+│
+▼ (Raw CSV Storage)
+┌────────────────────────────────────────────────────────┐
+│ Data Transformation Engine (Employee_Report.py)        │
+│ ── Transformed nested JSON/Strings & Multi-tables      │
+│ ── Aggregated KPI matrices (Working durations, Sales)  │
+└────────────────────────────────────────────────────────┘
+│
+▼ (Load via Google Sheets API)
+[ Google Sheets Database ]
+│
+▼ (Live Connection)
+[ Looker Studio BI Dashboard ] ──► End-user Report (Managers/Owners)
 ---
 
 ## 📂 Repository Structure
