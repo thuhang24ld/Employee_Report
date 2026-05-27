@@ -78,7 +78,7 @@ pip install pandas requests google-auth google-api-python-client
 ```
 3. Place your Google API credentials credentials.json into the root directory.
 
-4. Automation Scheduling (Windows)
+### Automation Scheduling (Windows)
 - Open Task Scheduler (taskschd.msc).
 - Create a new Basic Task -> Set Trigger to Daily.
 - Action: Start a Program.
