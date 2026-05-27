@@ -68,10 +68,21 @@ The transformed data updates live visualizations optimized for F&B operations ma
 
 ### Installation
 1. Clone the repository:
-   ```bash
-   git clone [https://github.com/your-username/automated-fb-employee-analysis.git](https://github.com/your-username/automated-fb-employee-analysis.git)
-   cd automated-fb-employee-analysis
+Bash
+git clone [https://github.com/your-username/automated-fb-employee-analysis.git](https://github.com/your-username/automated-fb-employee-analysis.git)
+cd automated-fb-employee-analysis   
+2. Install required packages:
+Bash
+pip install pandas requests google-auth google-api-python-client
+3. Place your Google API credentials credentials.json into the root directory.
+Automation Scheduling (Windows)
+- Open Task Scheduler (taskschd.msc).
+- Create a new Basic Task -> Set Trigger to Daily.
+- Action: Start a Program.
+- Program/Script: Path to your python.exe.
+- Add arguments: crawl_sale_by_date.py (Repeat for other crawl scripts).
 
+Developed as a data-driven business solution for optimizing workforce operations in the F&B domain.
 
 
 
