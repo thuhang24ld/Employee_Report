@@ -30,13 +30,13 @@ IPOS_EMAIL    = "Email"
 IPOS_PASSWORD = "password"
 
 
-COMPANY_ID = "BY6QM8X5LMWW"
-BRAND_ID   = "BRAND-E2ON"
-STORE_ID   = "EWLVNDGRWW4X"
+COMPANY_ID = "COMPANY_ID"
+BRAND_ID   = "BRAND_ID"
+STORE_ID   = "STORE_ID"
  
-ACCESS_TOKEN     = "5c885b2ef8c34fb7b1d1fad11eef7bec"
+ACCESS_TOKEN     = "ACCESS_TOKEN"
 OUTPUT_DIR       = r"D:\BanRau_IPos_Data\time_service"
-TOKEN_CACHE_FILE = r"D:\BanRau_IPos_Data\.token_cache.json"
+TOKEN_CACHE_FILE = r".token_cache.json"
  
 LOGIN_URL  = "https://posapi.ipos.vn/api/accounts/v1/user/login"
 DETAIL_URL = "https://posapi.ipos.vn/api/v3/forward/dw/report/fabi/controller/item/detail"
@@ -50,9 +50,9 @@ MAX_RETRIES = 3   # số lần retry khi timeout
 # GMAIL CONFIG
 # ============================================================
  
-GMAIL_FROM     = "thuhang24.ld@gmail.com"       # email gui
-GMAIL_PASSWORD = "wjqi vuyb kixb qtnr"       # <-- App Password 16 ky tu tu Google
-GMAIL_TO       = "thuhang24.ld@gmail.com"       # email nhan
+GMAIL_FROM     = "GMAIL_FROM"       # email gui
+GMAIL_PASSWORD = "GMAIL_PASSWORD"       # <-- App Password 16 ky tu tu Google
+GMAIL_TO       = "GMAIL_TO"       # email nhan
  
 # ============================================================
 # LOGGING
