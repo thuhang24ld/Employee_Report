@@ -17,19 +17,15 @@ from datetime import datetime, timezone, timedelta, date
 IPOS_EMAIL    = "Email"
 IPOS_PASSWORD = "password"  
 
-COMPANY_UID    = "415adcf8-9b6d-4167-bd02-305421f456bc"
-BRAND_UID      = "0e92cf59-1c6d-4f37-97d4-2c2e89254c3d"
-ACCESS_TOKEN   = "5c885b2ef8c34fb7b1d1fad11eef7bec"
+COMPANY_UID    = "COMPANY_UID"
+BRAND_UID      = "BRAND_UID"
+ACCESS_TOKEN   = "ACCESS_TOKEN"
 
 # Danh sách tất cả cửa hàng
-STORE_UIDS = [
-    "b22c4539-4eb7-4c2e-ab61-129e89916566",
-     "291963e2-371c-45f8-aace-694b5f7d9a5b",
-     "d966f1d9-e34b-4d25-bc9d-258e98cf654d"
-]
+STORE_UIDS = ["STORE_UID1", "STORE_UID2"]
 
 OUTPUT_DIR       = r"D:\BanRau_IPos_Data\Hoa_don"
-TOKEN_CACHE_FILE = r"D:\BanRau_IPos_Data\.token_cache.json"  # dùng chung cache với crawler chính
+TOKEN_CACHE_FILE = r"token_cache.json"  # dùng chung cache với crawler chính
 
 LOGIN_URL = "https://posapi.ipos.vn/api/accounts/v1/user/login"
 RPT_BASE  = "https://posapi.ipos.vn/api/reports_v1/v3/pos-cms/report"
