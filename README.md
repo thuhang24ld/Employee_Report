@@ -5,37 +5,59 @@
 [![Looker Studio](https://img.shields.io/badge/Looker%20Studio-Visualization-orange.svg)](https://lookerstudio.google.com/)
 [![Windows Task Scheduler](https://img.shields.io/badge/Automation-Task%20Scheduler-lightgrey.svg)](https://learn.microsoft.com/en-us/windows/win32/taskschd/task-scheduler-start-page)
 
-An end-to-end automated ETL (Extract, Transform, Load) pipeline designed to optimize workforce efficiency and operational visibility in the Food & Beverage (F&B) industry. This project automates the extraction of daily sales logs, transaction histories, and cooking durations from the **iPOS (Fabi)** system, transforms nested raw structures into clean analytical datasets, and pushes them to Google Sheets to power real-time **Looker Studio (Data Studio)** business intelligence dashboards.
+An end-to-end automated ETL (Extract, Transform, Load) pipeline designed to optimize workforce efficiency and operational visibility in the Food & Beverage (F&B) industry. 
+This project automates the extraction of daily sales logs, transaction histories, and cooking durations from the **iPOS (Fabi)** system, transforms nested raw structures into clean analytical datasets, and pushes them to Google Sheets to power real-time **Looker Studio (Data Studio)** business intelligence dashboards.
 
 ---
 
 ## 🚀 Key Business Impact
-* **Labor Cost Optimization:** Identifies workforce peak-hour workloads and tracking active employee sales performance.
-* **Operational Bottleneck Discovery:** Tracks kitchen cooking time detail to minimize customer wait times.
+* **Labor Cost Optimization:** Identifies workforce peak-hour workloads and tracks active employee sales performance ($%$ Combo vs. Alacarte sales).
+* **Operational Bottleneck Discovery:** Tracks kitchen cooking time details to minimize customer wait times and optimize kitchen workflows.
 * **Audit & Fraud Prevention:** Monitors order change logs (voided items, quantity adjustments) linked to specific staff accounts.
+* **Customer Loyalty Analysis:** Measures customer retention rates ($%$ of returning customers), new sign-ups, and evolving consumer spending trends.
 
 ---
 
 ## 🏗️ System Architecture
-<img width="471" height="390" alt="image" src="https://github.com/user-attachments/assets/3e769bb7-c96b-4b5a-8d4d-b725d4657226" />
-
+```text
+ [ iPOS (Fabi) System ]
+          │
+          ▼ (Extract)
+ ┌─────────────────────────────────────────────────────────────┐
+ │ Python Crawl Scripts (Triggered daily via taskschd.msc)     │
+ └─────────────────────────────────────────────────────────────┘
+          │
+          ▼ (Raw File Storage)
+ ┌─────────────────────────────────────────────────────────────┐
+ │ Data Transformation Engine (Employee_Report.py)             │
+ │  — Transformed nested JSON/Strings & Multi-tables           │
+ │  — Aggregated KPI matrix (Working durations, Sales)         │
+ └─────────────────────────────────────────────────────────────┘
+          │
+          ▼ (Load via Google Sheets API)
+ [ Google Sheets Database ]
+          │
+          ▼ (Live Connection)
+ [ Looker Studio BI Dashboard ] ──► End-user Report (Managers/Owners)
+```
 ---
 
 ## 📂 Repository Structure
 
 * `.github/` - Github actions and workflow configurations.
-* `scripts/`: Core Python engine (github.py) and automation scripts (.sh/.bat).
-* `config/`: Environment variables (.env) and API credentials (git-ignored for security).
-* `data/`: Local audit trail of processed files (timestamped).
-* `presentation/`: A comprehensive PDF case study detailing the ETL workflow and Looker Studio dashboard previews.
+* `data/` - include: Cleaned, aggregated, and final processed data and Raw data snapshots crawled from iPOS.
+* `reports/` - PDF Exported case studies / static dashboards
+* `scripts/` - Core Python engine (github.py) and automation scripts (.sh/.bat).
+* `.gitignore/` - Ensures sensitive config/credentials are not committed.
 * `README.md` - Project documentation.
+* `requirements.txt` - Python dependencies
 
 ---
 
 ## 🛠️ Data Pipeline & ETL Technical Details
 
 ### 1. Extract
-* Automated requests target the iPOS endpoint using custom Python scrapers.
+* Automated requests target the iPOS endpoint using custom Python scrapers. (`scripts/crawl_*.py`).
 * Scheduled to run autonomously every midnight using Windows Task Scheduler (`taskschd.msc`) to capture the previous day's complete dataset without manual intervention.
 
 ### 2. Transform
@@ -45,16 +67,16 @@ An end-to-end automated ETL (Extract, Transform, Load) pipeline designed to opti
 
 ### 3. Load
 * Pushes incremental updates directly into separate worksheets on Google Sheets using the OAuth2 `google-api-python-client`.
-* Automatically clears outdated temporal caches to ensure lightweight storage while maintaining analytical integrity.
+* Overwrites or appends temporal analytical caches dynamically to ensure lightweight, fast-loading storage while maintaining history.
 
 ---
 
 ## 📊 Business Intelligence Dashboard (Looker Studio)
 
 The transformed data updates live visualizations optimized for F&B operations managers:
-* **Employee Performance Table:** Revenue generated per shift, checkouts handled, and average processing error rates. [Xem file PDF](https://github.com/thuhang24ld/Employee_Report/blob/main/Presentation/B%E1%BA%A2N_RAU_-_B%C3%810_C%C3%810_NH%C3%82N_S%E1%BB%B0.pdf)
-* **Kitchen Efficiency Tracker:** Monitor item processing speed against standard SLAs. [Xem file PDF](https://github.com/thuhang24ld/Employee_Report/blob/main/Presentation/Royal_customer.pdf)
-* **Risk & Fraud Control Monitor:** Highlighting unusual item cancellations or manual price overrides.
+* **Employee Performance Dashboard**: Revenue generated per shift, checkouts handled, and combo sales conversion rates. [See PDF preview in reports](https://github.com/thuhang24ld/Employee_Report/blob/main/reports/Employee_Sales_Performance.pdf)
+* **Kitchen Efficiency Tracker**: Monitors item processing speed against standard SLAs to optimize kitchen line preparation. [See PDF preview in reports](https://github.com/thuhang24ld/Employee_Report/blob/main/reports/order-to-serve_time.pdf)
+* **Customer Loyalty Monitor**: Tracks returning customer percentages, behavior shifts, and VIP metrics. [See PDF preview in reports](https://github.com/thuhang24ld/Employee_Report/blob/main/reports/Royal_customer.pdf)
 
 ---
 
@@ -78,11 +100,11 @@ pip install pandas requests google-auth google-api-python-client
 3. Place your Google API credentials credentials.json into the root directory.
 
 ### Automation Scheduling (Windows)
-- Open Task Scheduler (taskschd.msc).
-- Create a new Basic Task -> Set Trigger to Daily.
-- Action: Start a Program.
-- Program/Script: Path to your python.exe.
-- Add arguments: crawl_sale_by_date.py (Repeat for other crawl scripts).
+1. Open Task Scheduler (`taskschd.msc`).
+2. Create a new Basic Task and set the Trigger to Daily (e.g., 12:05 AM).
+3. Action: Start a Program.
+4. Program/Script: Path to your `python.exe` (or an orchestrated .bat wrapper).
+5. Add arguments: `scripts/crawl_sale_by_date.py` (Repeat configuration for other extraction scripts as needed).
 
 Developed as a data-driven business solution for optimizing workforce operations in the F&B domain.
 
